@@ -1,0 +1,88 @@
+<sly data-sly-use.eventlist="com.myproject.aem.core.services.CustomerFormServices">
+    <div class="events-listing">
+    	<!-- Featured -->
+       		<sly data-sly-list.eventsArray="${eventlist.EventsListing}">
+		       <div class="container">
+			   <div class="item-${eventsArray.eventsFeatured} col-lg-12 news-item">
+			        <div class="row">
+		        		<div class="col-12 col-lg-6 featured-image">
+	                           <a href="${eventsArray.eventsPagePath}.html">
+	                           	<img class="d-block w-100" src="${eventsArray.imageFileSquare || '/etc/designs/myproject/img/default-bg.png'}" alt="${eventsArray.imageAlt}" >
+	                           </a>
+	                    </div>
+	                    <div class="col-12 col-lg-6">
+							<div class="events-metadata">
+                                <p class="event-type"><sly data-sly-test="${eventsArray.eventsType}">${newsArray.newsType}</sly></p>
+                                <p class="event-title" data-sly-test="${eventsArray.eventsTitle}"><a href="${newsArray.newsPagePath}.html">${newsArray.newsTitle}</a></p>
+                                <p class="event-description"><sly data-sly-test="${eventsArray.eventsDescription}">${eventsArray.eventsDescription || "Sample description to test the styles"}</sly></p>
+                                <div >
+                                	<sly data-sly-list.key="${eventsArray.map}">
+			                                <a href=${eventsArray.map[key]}>
+			                                ${key} 
+			                                </a>
+	                                </sly>
+                                &middot; ${eventsArray.newsPublishingDate}
+                                </div>
+							</div>
+			           	</div>
+			        </div>
+		        </div>
+			   </div>
+		   </sly> 
+		   <!-- Latest -->
+		   <sly data-sly-list.eventsArray="${events.eventsListLatest}">
+		   <sly data-sly-test.first="${events.eventsListLatest[newsArrayList.index]}"></sly>
+           <sly data-sly-test.second="${events.eventsListLatest[newsArrayList.count]}"></sly>
+			<div class="container">
+		   		<div class="item-Latest col-lg-12 news-item" data-sly-test="${eventsArrayList.odd}">
+			        <div class="row">
+	                    <div class="col-12 col-lg-6 latest-block">
+	                    	<a href="${first.eventsPagePath}.html">
+	                        	<img class="d-block w-100" alt="${first.imageAlt}" src="${first.imageFileSquare || '/etc/designs/myproject/img/default-bg.png'}">
+	                        </a>
+	                        <div class="item latest">
+	                            <div class="item-metadata">
+	                                <p class="events-type"><sly data-sly-test="${first.eventsType}">${first.eventsType}</sly></p>
+	                                <h4 class="events-title"><a href="${first.eventsPagePath}.html"><sly data-sly-test="${first.eventsTitle}">${first.eventsTitle}</sly></a></h4>
+	                                <div class="sector-tag-item">
+                                	<sly data-sly-list.key="${first.map}">
+			                                <a href=${first.map[key]}>
+			                                ${key} 
+			                                </a>
+	                                </sly>
+	                                &middot; ${first.eventsPublishingDate}
+	                                </div>
+	                                <p class="news-description"><sly data-sly-test="${first.eventsDescription}">${first.eventsDescription || 'Sample description to test the styles'}</sly></p>
+	                            </div>
+	                        </div>
+			           </div>
+
+		        </div>
+			 </div>
+		   </sly>
+		   
+		   <!-- Generic -->
+		   <div class="container">
+		   <sly data-sly-list.newsArray="${events.eventsListGeneric}">
+			   
+		   	<div class="item-${eventsArray.eventsFeatured} col-lg-4 news-item">
+		        <div class="row">
+		        	<div class="col-12 col-lg-12 generic-image">
+                        <img class="d-block w-100" alt="${eventsArray.imageAlt}" src="${eventsArray.imageFileSquare || '/etc/designs/myproject/img/default-bg.png'}">
+                    	<div class="item generic">
+                            <div class="item-metadata">
+                                <p class="events-type"><sly data-sly-test="${eventsArray.newsType}">${eventsArray.eventsType}</sly></p>
+                                <h4 class="events-title" data-sly-test="${eventsArray.newsTitle}"><sly>${eventsArray.eventsTitle}</sly></h4>
+                                <div data-sly-list.key="${eventsArray.map}"><span class="sector-items"><a href=${eventsArray.map[key]}>${key}</a></span></div>
+                                &middot;
+                                <div class="news-date">${eventsArray.eventsPublishingDate}</div>
+
+                            </div>
+                        </div>
+		           </div>
+		        </div>
+		        </div>
+			   </div>
+		   </sly>
+    </div>
+</sly>

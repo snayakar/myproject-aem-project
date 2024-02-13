@@ -1,0 +1,100 @@
+<!-- Begin TH News and Events Component -->
+<sly data-sly-use.event="com.myproject.aem.core.models.EventsModel">
+<div class="component-events">
+	
+    <div class="container">
+        <div class="row">
+            <!-- Events Details-->
+            <div class="col-md-12">
+                    <div class="row">
+                        <h3>Event Details</h3>
+                        <p class="see-all-link"><a href="/content/myproject/home/Events.html">See all</a></p>
+                    </div>
+                </div>
+            <div class="col-lg-6 news-insights">
+            
+                
+                <div class="row">
+                	<sly data-sly-list.newsArray="${event.newsListFeatured}">
+                    <div class="col-md-12">
+                        <div class="item feature-1 col-md-12">
+                            <div class="row">
+                            	<a href="${newsArray.newsPagePath}.html">
+                                	<img src="${newsArray.imageFileSquare || '/etc/designs/telstrahealth/img/th-default-bg.png'}" alt="${newsArray.imageAlt}"/>
+                            	</a>
+                            </div>
+                            <div class="item-metadata">
+                                <p class="label"><sly data-sly-test="${newsArray.newsType}">${newsArray.newsType}</sly></p>
+                                <h4 class="title" data-sly-test="${newsArray.newsTitle}"><a href="${newsArray.newsPagePath}.html">${newsArray.newsTitle}</a></h4>
+                                <p class="metadata">
+                                <sly data-sly-list.key="${newsArray.map}">
+                                <a href=${newsArray.map[key]}>
+			                                ${key} 
+			                                </a> </sly> &middot; ${newsArray.newsPublishingDate}</p>
+                            </div>
+                        </div>
+                    </div>
+                    </sly>
+                </div>
+                
+            </div>
+
+            <!-- Training and events -->
+           <sly data-sly-list.newsArray="${news.newsListLatest}">
+		   <sly data-sly-test.first="${news.newsListLatest[newsArrayList.index]}"></sly>
+           <sly data-sly-test.second="${news.newsListLatest[newsArrayList.count]}"></sly>
+            <div class="col-lg-6 training-events">
+                <div class="row" data-sly-test="${newsArrayList.count < 2}">
+                    <div class="col-md-6">
+                        <div class="item feature-2 col-md-12">
+                            <div class="row">
+                               <a href="${first.newsPagePath}.html">
+                                <img alt="${first.imageAlt}" src="${first.imageFileSquare || '/etc/designs/telstrahealth/img/th-default-bg.png'}" />
+                            	</a>
+                            </div>
+                            <div class="item-metadata">
+                                <p class="label"><sly data-sly-test="${first.newsType}">${first.newsType}</sly></p>
+                                <h4 class="date"><a href="${first.newsPagePath}.html"><sly data-sly-test="${first.newsTitle}">${first.newsTitle}</sly></a></h4>
+                                <p class="metadata">
+                                	<sly data-sly-list.key="${first.map}">
+			                                <a href=${first.map[key]}>
+			                                ${key} 
+			                                </a>
+	                                </sly>
+	                                &middot; ${first.newsPublishingDate}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="item feature-2 col-md-12">
+                            <div class="row">
+                            <a href="${second.newsPagePath}.html">
+                                <img alt="${second.imageAlt}" src="${second.imageFileSquare || '/etc/designs/telstrahealth/img/th-default-bg.png'}" />
+                            </a>
+                            </div>
+                            <div class="item-metadata">
+                                <p class="label"><sly data-sly-test="${second.newsType}">${second.newsType}</sly></p>
+                                <h4 class="date">
+                                	<a href="${second.newsPagePath}.html">
+                                		<sly data-sly-test="${second.newsTitle}">
+                                		${second.newsTitle}
+                                		</sly>
+                                	</a>
+                                </h4>
+                                <p class="metadata">
+                                	<sly data-sly-list.key="${second.map}">
+			                                <a href=${second.map[key]}>
+			                                ${key} 
+			                                </a>
+	                                </sly>
+	                                &middot; ${second.newsPublishingDate}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></sly>
+        </div>
+    </div>
+</div>
+</sly>
+<!-- End TH News and Events Component -->
