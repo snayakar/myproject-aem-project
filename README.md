@@ -1,6 +1,19 @@
-# Sample AEM project template
+# myproject-aem-project is a AEM project template
 
 This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
+ 
+We tried to implement  the project for Events Management Company with an assumption that  Customer doesn't have an AEM Forms license
+
+## Components to be viewed for this Project are:
+EventDetails Component
+Events Listing Component.
+
+## Classes
+EventsModel
+CustomerFormServices
+CustomerFormServlet
+
+
 
 ## Modules
 
@@ -95,7 +108,12 @@ can be found here https://github.com/adobe/aemanalyser-maven-plugin
 
 ### UI tests
 
-They will test the UI layer of your AEM application using Selenium technology. 
+They will test the UI layer of your AEM application using Selenium technology.
+Sudo unit test for the implementation are done to check the classes
+
+## Classes
+CustomerFormServicesTest
+CustomerFormServletTest
 
 To run them locally:
 
